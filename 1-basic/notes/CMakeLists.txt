@@ -1,0 +1,1 @@
+project("basic_notes")

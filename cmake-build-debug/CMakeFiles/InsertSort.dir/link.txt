@@ -1,0 +1,3 @@
+"D:\Program Files\JetBrains\CLion 2022.2.1\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\InsertSort.dir/objects.a
+"D:\Program Files\JetBrains\CLion 2022.2.1\bin\mingw\bin\ar.exe" qc CMakeFiles\InsertSort.dir/objects.a @CMakeFiles\InsertSort.dir\objects1.rsp
+"D:\Program Files\JetBrains\CLion 2022.2.1\bin\mingw\bin\g++.exe" -g -Wl,--whole-archive CMakeFiles\InsertSort.dir/objects.a -Wl,--no-whole-archive -o InsertSort.exe -Wl,--out-implib,libInsertSort.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\InsertSort.dir\linklibs.rsp

@@ -1,7 +1,7 @@
 ﻿// newCode_zuochengyun.cpp: 定义应用程序的入口点。
 //
 
-#include "newCode_zuochengyun.h"
+#include "public.h"
 
 using std::cout;
 using std::cin;

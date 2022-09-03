@@ -1,0 +1,3 @@
+"D:\Program Files\JetBrains\CLion 2022.2.1\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\FindAppearOddTimeTwoNumber.dir/objects.a
+"D:\Program Files\JetBrains\CLion 2022.2.1\bin\mingw\bin\ar.exe" qc CMakeFiles\FindAppearOddTimeTwoNumber.dir/objects.a @CMakeFiles\FindAppearOddTimeTwoNumber.dir\objects1.rsp
+"D:\Program Files\JetBrains\CLion 2022.2.1\bin\mingw\bin\g++.exe" -g -Wl,--whole-archive CMakeFiles\FindAppearOddTimeTwoNumber.dir/objects.a -Wl,--no-whole-archive -o FindAppearOddTimeTwoNumber.exe -Wl,--out-implib,libFindAppearOddTimeTwoNumber.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\FindAppearOddTimeTwoNumber.dir\linklibs.rsp

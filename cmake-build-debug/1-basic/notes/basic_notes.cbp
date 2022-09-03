@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="basic_notes"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\1-basic\;CMake Files\1-basic\notes\;CMake Files\1-basic\practises\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="D:/Codes/zuochengyun/cmake-build-debug/1-basic/notes"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/Program Files/JetBrains/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;D:/Codes/zuochengyun/cmake-build-debug/1-basic/notes/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="D:/Program Files/JetBrains/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;D:/Codes/zuochengyun/cmake-build-debug/1-basic/notes/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Program Files/JetBrains/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;D:/Codes/zuochengyun/cmake-build-debug/1-basic/notes/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Program Files/JetBrains/CLion 2022.2.1/bin/mingw/bin/mingw32-make.exe -f &quot;D:/Codes/zuochengyun/cmake-build-debug/1-basic/notes/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="D:/Codes/zuochengyun/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="D:/Codes/zuochengyun/1-basic/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\1-basic\"/>
+		</Unit>
+		<Unit filename="D:/Codes/zuochengyun/1-basic/notes/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\1-basic\notes\"/>
+		</Unit>
+		<Unit filename="D:/Codes/zuochengyun/1-basic/practises/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\1-basic\practises\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
