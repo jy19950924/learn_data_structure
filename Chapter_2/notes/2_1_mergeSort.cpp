@@ -31,7 +31,7 @@ void merge(vector<int> &arr, int L, int M, int R) {
     }
 
     for (int j = 0; j < len; j++) {
-        arr[L + j] = help[i];
+        arr[L + j] = help[j];
     }
 }
 
