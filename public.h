@@ -5,12 +5,16 @@
 
 #include<iostream>
 #include<vector>
+#include<string>
 #include<algorithm>
+
+#include <typeinfo>
 
 using std::cout;
 using std::cin;
 using std::endl;
 using std::vector;
+using std::string;
 using std::swap;
 using std::for_each;
 
