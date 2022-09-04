@@ -1,0 +1,3 @@
+project("basic_practises")
+
+add_executable("2_14_fastSortOrder" "2_14_fastSortOrder.cpp" ../notes/1_mergeSort.cpp)

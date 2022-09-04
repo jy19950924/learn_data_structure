@@ -1,1 +1,0 @@
-project("basic_notes")
