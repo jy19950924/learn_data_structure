@@ -56,7 +56,7 @@ void merge(string &s, int L, int M, int R) {
             while (isFlag(s[p2]) && (p2 <= R)) p2++;
             if (p1 < M && p2 <= R) {
                 if (compare(s[p1], s[p2]) <= 0) {
-//                    说明left <= right, 将小的数字推入help中
+                    // 说明left <= right, 将小的数字推入help中
                     help[i++] = s[p1++];
                 } else {
                     help[i++] = s[p2++];
@@ -71,40 +71,6 @@ void merge(string &s, int L, int M, int R) {
 
 
     }
-    /*
-//    while (p1 < M && p2 <= R) {
-//        if (isFlag(s[i + L])) {
-//            help[i++] = s[i + L];
-//        } else {
-//            if (compare(s[p1], s[p2]) <= 0) {
-//                while (isFlag(s[p1])) p1++;
-//
-//                help[i++] = s[p1++];
-//            } else {
-//                while (isFlag(s[p2])) p2++;
-//                help[i++] = s[p2++];
-//            }
-//        }
-//    }
-//    while (p1 < M) {
-//        if (isFlag(s[i + L])) {
-//            help[i++] = s[i + L];
-//        } else {
-//            while (isFlag(s[p1])) p1++;
-//            help[i++] = s[p1++];
-//        }
-//    }
-//    while (p2 <= R) {
-//        if (isFlag(s[i + L])) {
-//            help[i++] = s[i + L];
-//        } else {
-//            while (isFlag(s[p2])) p2++;
-//            help[i++] = s[p2++];
-//        }
-//    }
-//    cout << help << endl;
-     */
-    cout << L << ' ' << R << ' ' << M << ' ' << help << endl;
     s.replace(L, help.size(), help);
 }
 
@@ -133,18 +99,12 @@ string stringSort(string s) {
 int main() {
     //          0123456789A123456789B123456789C123456789D123456789
     string s = "A Famous Saying: Much Ado About Nothing (2012/8).";
-//    string s = "By?e";
     string res = stringSort(s);
-    cout << res << endl;
-
-//    string ss = string(10, '0');
-//    ss[2] = 'j';
-//    cout << ss << endl;
-//    string target = "A aaAAbc dFgghh: iimM nNn oooos Sttuuuy (2012/8).";
-//    if (res == target)
-//        cout << "True" << endl;
-//    else
-//        cout << "False" << endl;
+    string target = "A aaAAbc dFgghh: iimM nNn oooos Sttuuuy (2012/8).";
+    if (res == target)
+        cout << "True" << endl;
+    else
+        cout << "False" << endl;
     return 0;
 }
 
