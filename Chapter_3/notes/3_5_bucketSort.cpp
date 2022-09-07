@@ -18,8 +18,9 @@
 */
 #include "../../public.h"
 
-vector<int> bucketSort(vector<int> arr, int L, int R, int digit) {
-    int radix = 10;
+int radix = 10;
+
+vector<int> process(vector<int> arr, int L, int R, int digit) {
     vector<int> help(arr.size(), 0);
     for (int i = 0; i < digit; i++) {
         vector<int> count(radix, 0);
@@ -37,4 +38,23 @@ vector<int> bucketSort(vector<int> arr, int L, int R, int digit) {
         arr = help;
     }
     return arr;
+}
+
+vector<int> baseSort(vector<int> arr) {
+    int maxValue = 0;
+    for (int i: arr) {
+        maxValue = maxValue < i ? i : maxValue;
+    }
+    int maxDigit = 0;
+    while (maxValue > 0) {
+        maxValue = maxValue / radix;
+        maxDigit++;
+    }
+    return process(arr, 0, arr.size() - 1, maxDigit);
+}
+
+int main() {
+    vector<int> arr = {4, 3, 2, 1};
+
+    vector<int> res = baseSort(arr);
 }
