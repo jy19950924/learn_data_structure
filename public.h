@@ -9,8 +9,10 @@
 #include<algorithm>
 
 #include <typeinfo>
+#include <cmath>
 
 using std::cout;
+using std::pow;
 using std::cin;
 using std::endl;
 using std::vector;
