@@ -20,9 +20,9 @@
 
 vector<int> bucketSort(vector<int> arr, int L, int R, int digit) {
     int radix = 10;
+    vector<int> help(arr.size(), 0);
     for (int i = 0; i < digit; i++) {
         vector<int> count(radix, 0);
-        vector<int> help(arr.size(), 0);
         for (int j: arr) {
             int bit = (j / int(pow(radix, i))) % radix;
             count[bit]++;
