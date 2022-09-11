@@ -1,3 +1,6 @@
+project(Chapter_3)
 
+add_executable(bucketSort bucketSort.cpp)
 
-add_executable(3_5_bucketSort 3_5_bucketSort.cpp)
+# 列表结果相关的方法
+add_executable(listStruct listStruct.cpp)
