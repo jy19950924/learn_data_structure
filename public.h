@@ -10,6 +10,7 @@
 
 #include <typeinfo>
 #include <cmath>
+#include <array>
 
 using std::cout;
 using std::pow;
@@ -20,6 +21,7 @@ using std::string;
 using std::swap;
 using std::for_each;
 using std::sort;
+using std::array;
 
 
 
