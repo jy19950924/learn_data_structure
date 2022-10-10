@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 
 typedef int T;
 
@@ -15,10 +16,19 @@ public:
     TreeNode(T val, TreeNode *left, TreeNode *right) : left(left), right(right), val(val){};
 };
 
+class Sentinel
+{
+public:
+    TreeNode *next;
+    Sentinel() : next(nullptr){};
+};
+
 class Tree
 {
 public:
-    TreeNode *head;
-    Tree() : head(nullptr){};
+    TreeNode *root;
+    Tree() : root(nullptr){};
     Tree(T *arr, size_t n);
+
+    ~Tree();
 };
