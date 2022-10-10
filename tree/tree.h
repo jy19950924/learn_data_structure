@@ -16,13 +16,6 @@ public:
     TreeNode(T val, TreeNode *left, TreeNode *right) : left(left), right(right), val(val){};
 };
 
-class Sentinel
-{
-public:
-    TreeNode *next;
-    Sentinel() : next(nullptr){};
-};
-
 class Tree
 {
 public:
