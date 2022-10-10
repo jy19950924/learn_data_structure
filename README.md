@@ -2,7 +2,7 @@
 
 牛客网左神视频笔记。
 
-- [] sort
+- [ ] sort
     - [x] bubbleSort
     - [x] selectSort
     - [x] insertSort
@@ -10,10 +10,10 @@
     - [x] bucketSort
     - [ ] fastSort 
 
-- [] list
+- [ ] list
 
-- [] tree
-    - [] traversal(recursion and non-recursive)
-        - [] preorder traversal
-        - [] inorder traversal
-        - [] post-order traversal
+- [ ] tree
+    - [ ] traversal(recursion and non-recursive)
+        - [ ] preorder traversal
+        - [ ] inorder traversal
+        - [ ] post-order traversal
