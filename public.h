@@ -3,31 +3,35 @@
 
 #pragma once
 
-#include<iostream>
-#include<vector>
-#include<string>
-#include<algorithm>
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
 
 #include <typeinfo>
 #include <cmath>
 #include <array>
 
-using std::cout;
-using std::pow;
+using std::array;
 using std::cin;
+using std::cout;
 using std::endl;
-using std::vector;
+using std::for_each;
+using std::pow;
+using std::sort;
 using std::string;
 using std::swap;
-using std::for_each;
-using std::sort;
-using std::array;
+using std::vector;
 
+struct TreeNode
+{
+    int val;
+    TreeNode *left;
+    TreeNode *right;
 
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
 
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
 
-
-
-
-
-// TODO: 在此处引用程序需要的其他标头。
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
