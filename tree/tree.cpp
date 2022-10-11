@@ -8,14 +8,14 @@ Tree::Tree(T *arr, size_t n)
     for (int i = 1; i < n; i++)
     {
         nodes[i].val = arr[i];
-        nodes[i].left = (nodes + 2 * i);
-        nodes[i].right = (nodes + 2 * i + 1);
+        nodes[i].left = (2 * i) < n ? (nodes + 2 * i) : nullptr;
+        nodes[i].right = (2 * i + 1) < n ? (nodes + 2 * i + 1) : nullptr;
     }
     this->root = &nodes[1];
     this->_mhead = nodes;
 }
 
-void Tree::preorder()
+void Tree::preorderTraversal()
 {
     using namespace std;
 
@@ -38,24 +38,38 @@ void Tree::preorder()
     cout << endl;
 }
 
+void Tree::inorderTraversal()
+{
+    using namespace std;
+    stack<TreeNode *> stk;
+    TreeNode *cur = root;
+
+    while (!stk.empty() || cur != nullptr)
+    {
+        if (cur != nullptr)
+        {
+            stk.push(cur);
+            cur = cur->left;
+        }
+        else
+        {
+            cur = stk.top(); // parent node
+            stk.pop();
+            cout << cur->val << ' ';
+            cur = cur->right;
+        }
+    }
+}
+
+void Tree::drawTree()
+{
+    using namespace std;
+}
+
 Tree::~Tree()
 {
     if (this->_mhead != nullptr)
     {
         delete[] this->_mhead;
     }
-}
-
-int main()
-{
-    using namespace std;
-
-    int data[] = {0, 1, 3, 4, 65, 8, 9, 0, 6, 4, 7};
-    int len = sizeof(data) / sizeof(data[0]);
-
-    Tree tree1 = Tree(data, len);
-    tree1.preorder();
-    cout << "done!" << endl;
-
-    return 0;
 }
