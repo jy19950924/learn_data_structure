@@ -14,3 +14,26 @@ Tree::Tree(T *arr, size_t n)
     this->root = &nodes[1];
     this->_mhead = nodes;
 }
+
+void Tree::preorder()
+{
+    using namespace std;
+
+    stack<TreeNode *> stk;
+    stk.push(this->root);
+    while (!stk.empty())
+    {
+        TreeNode *top = stk.top();
+        stk.pop();
+        cout << top->val << ' ';
+        if (top->right != nullptr)
+        {
+            stk.push(top->right);
+        }
+        if (top->left != nullptr)
+        {
+            stk.push(top->left);
+        }
+    }
+    cout << endl;
+}
