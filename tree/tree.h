@@ -1,5 +1,6 @@
 #include <iostream>
 #include <queue>
+#include <stack>
 
 typedef int T;
 
@@ -19,9 +20,16 @@ public:
 class Tree
 {
 public:
+    TreeNode *_mhead;
     TreeNode *root;
-    Tree() : root(nullptr){};
+    Tree() : _mhead(nullptr), root(nullptr){};
     Tree(T *arr, size_t n);
+
+    void drawTree();
+
+    void preorder();
+    void inorder();
+    void postorder();
 
     ~Tree();
 };
