@@ -61,6 +61,38 @@ void Tree::inorderTraversal()
     }
 }
 
+void Tree::postorderTraversal()
+{
+    using namespace std;
+
+    stack<TreeNode *> stk;
+    TreeNode *prev = nullptr, *cur = root;
+
+    while (!stk.empty() || cur != nullptr)
+    {
+        if (cur != nullptr)
+        {
+            stk.push(cur);
+            cur = cur->left;
+        }
+        else
+        {
+            cur = stk.top();
+            if (cur->right == nullptr || cur->right == prev)
+            {
+                cout << cur->val << ' ';
+                stk.pop();
+                cur = nullptr;
+            }
+            else
+            {
+                cur = cur->right;
+            }
+        }
+    }
+    cout << endl;
+}
+
 void Tree::drawTree()
 {
     using namespace std;
