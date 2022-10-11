@@ -1,6 +1,6 @@
 #include "tree.h"
 
-const int nullFlag = -1;
+const int emptyFlag = -1;
 
 Tree::Tree(T *arr, size_t n)
 {
@@ -9,9 +9,12 @@ Tree::Tree(T *arr, size_t n)
     TreeNode *nodes = new TreeNode[n];
     for (int i = 1; i < n; i++)
     {
+        if (arr[i] == emptyFlag)
+            continue;
+
         nodes[i].val = arr[i];
-        nodes[i].left = ((2 * i < n) && (nodes[2 * i].val != nullFlag)) ? (nodes + 2 * i) : nullptr;
-        nodes[i].right = (((2 * i + 1) < n) && (nodes[2 * i + 1].val != nullFlag)) ? (nodes + 2 * i + 1) : nullptr;
+        nodes[i].left = 2 * i < n ? (nodes + 2 * i) : nullptr;
+        nodes[i].right = (2 * i + 1) < n ? (nodes + 2 * i + 1) : nullptr;
     }
     this->root = &nodes[1];
     this->_mhead = nodes;
