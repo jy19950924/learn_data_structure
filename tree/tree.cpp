@@ -45,3 +45,17 @@ Tree::~Tree()
         delete[] this->_mhead;
     }
 }
+
+int main()
+{
+    using namespace std;
+
+    int data[] = {0, 1, 3, 4, 65, 8, 9, 0, 6, 4, 7};
+    int len = sizeof(data) / sizeof(data[0]);
+
+    Tree tree1 = Tree(data, len);
+    tree1.preorder();
+    cout << "done!" << endl;
+
+    return 0;
+}
