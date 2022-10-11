@@ -1,5 +1,7 @@
 #include "tree.h"
 
+const int nullFlag = -1;
+
 Tree::Tree(T *arr, size_t n)
 {
     using namespace std;
@@ -8,8 +10,8 @@ Tree::Tree(T *arr, size_t n)
     for (int i = 1; i < n; i++)
     {
         nodes[i].val = arr[i];
-        nodes[i].left = (2 * i) < n ? (nodes + 2 * i) : nullptr;
-        nodes[i].right = (2 * i + 1) < n ? (nodes + 2 * i + 1) : nullptr;
+        nodes[i].left = ((2 * i < n) && (nodes[2 * i].val != nullFlag)) ? (nodes + 2 * i) : nullptr;
+        nodes[i].right = (((2 * i + 1) < n) && (nodes[2 * i + 1].val != nullFlag)) ? (nodes + 2 * i + 1) : nullptr;
     }
     this->root = &nodes[1];
     this->_mhead = nodes;
