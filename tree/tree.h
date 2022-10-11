@@ -27,9 +27,9 @@ public:
 
     void drawTree();
 
-    void preorder();
-    void inorder();
-    void postorder();
+    void preorderTraversal();
+    void inorderTraversal();
+    void postorderTraversal();
 
     ~Tree();
 };
