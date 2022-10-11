@@ -12,5 +12,5 @@ Tree::Tree(T *arr, size_t n)
         nodes[i].right = (nodes + 2 * i + 1);
     }
     this->root = &nodes[1];
-    delete nodes;
+    this->_mhead = nodes;
 }
