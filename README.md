@@ -14,6 +14,6 @@
 
 - [ ] tree
     - [ ] traversal(recursion and non-recursive)
-        - [ ] preorder traversal
-        - [ ] inorder traversal
+        - [x] preorder traversal
+        - [x] inorder traversal
         - [ ] post-order traversal
