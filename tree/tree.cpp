@@ -37,3 +37,11 @@ void Tree::preorder()
     }
     cout << endl;
 }
+
+Tree::~Tree()
+{
+    if (this->_mhead != nullptr)
+    {
+        delete[] this->_mhead;
+    }
+}
