@@ -25,3 +25,5 @@
         - [ ] judgment complete binary tree
     - [ ] full binary tree
         - [ ] judgment full binary tree
+    - [ ] balance binary tree
+        - [ ] judgment balance binary tree
