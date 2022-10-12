@@ -13,7 +13,15 @@
 - [ ] list
 
 - [ ] tree
-    - [ ] traversal(recursion and non-recursive)
+    - [x] traversal(recursion and non-recursive)
         - [x] preorder traversal
         - [x] inorder traversal
-        - [ ] post-order traversal
+        - [x] post-order traversal
+        - [x] breath first traversal
+
+    - [ ] binary search tree
+        - [ ] judgment binary search tree
+    - [ ] complete binary tree
+        - [ ] judgment complete binary tree
+    - [ ] full binary tree
+        - [ ] judgment full binary tree
