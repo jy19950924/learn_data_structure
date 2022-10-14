@@ -27,3 +27,9 @@
         - [ ] judgment full binary tree
     - [ ] balance binary tree
         - [ ] judgment balance binary tree
+    
+    - [ ] successor node
+    - [ ] examples
+        - [ ] find common ancestor
+        - [ ] binary tree serialization and deserilize (learn by self)
+        - [ ] question: paper folded in half
