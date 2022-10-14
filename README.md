@@ -20,7 +20,8 @@
         - [x] breath first traversal
 
     - [ ] binary search tree
-        - [ ] judgment binary search tree
+        - [x] judgment binary search tree (recursion)
+        - [ ] judgment binary search tree (non-recursion)
     - [ ] complete binary tree
         - [ ] judgment complete binary tree
     - [ ] full binary tree
