@@ -19,13 +19,13 @@
         - [x] post-order traversal
         - [x] breath first traversal
 
-    - [ ] binary search tree
+    - [x] binary search tree
         - [x] judgment binary search tree (recursion)
-        - [ ] judgment binary search tree (non-recursion)
-    - [ ] complete binary tree
-        - [ ] judgment complete binary tree
-    - [ ] full binary tree
-        - [ ] judgment full binary tree
+        - [x] judgment binary search tree (non-recursion)
+    - [x] complete binary tree
+        - [x] judgment complete binary tree
+    - [x] full binary tree
+        - [x] judgment full binary tree
     - [ ] balance binary tree
         - [ ] judgment balance binary tree
     
