@@ -26,8 +26,8 @@
         - [x] judgment complete binary tree
     - [x] full binary tree
         - [x] judgment full binary tree
-    - [ ] balance binary tree
-        - [ ] judgment balance binary tree
+    - [x] balance binary tree
+        - [x] judgment balance binary tree
     
     - [ ] successor node
     - [ ] examples
