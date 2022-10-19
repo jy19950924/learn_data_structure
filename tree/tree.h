@@ -23,10 +23,10 @@ public:
 class Tree
 {
 public:
-    TreeNode *_mhead;
     TreeNode *root;
-    Tree() : _mhead(nullptr), root(nullptr){};
+    Tree() : root(nullptr){};
     Tree(T *arr, size_t n);
+
 
     void drawTree();
 
