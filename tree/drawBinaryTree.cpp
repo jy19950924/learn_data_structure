@@ -1,3 +1,6 @@
+#include <iostream>
+#include "./tree.h"
+#include <stdlib.h>
 #include <string>
 #include <deque>
 
@@ -16,12 +19,12 @@ Floor draw(TreeNode *root)
 {
     if (root->left == nullptr && root->right == nullptr) {
         string s_val = to_string(root->val);
-        deque<string> lines = {s_val};
+        deque<string> lines;
+        lines.push_back(s_val);
         int width = s_val.size();
-        Floor floor = Floor(lines, width, 1, width / 2);
-        return floor;
-    }
-    if (root->left == nullptr) {
+        Floor n_floor = Floor(lines, width, 1, width / 2);
+        return n_floor;
+    } else if (root->lseft == nullptr) {
         Floor right = draw(root->right);
 
         string s_val = to_string(root->val);
@@ -37,15 +40,14 @@ Floor draw(TreeNode *root)
         right.lines.push_front(s_flagFloor);
         right.lines.push_front(s_nodeFloor);
         return right;
-    }
-    if (root->right == nullptr) {
+    } else if (root->right == nullptr) {
         Floor left = draw(root->left);
 
         string s_val = to_string(root->val);
         string s_nodeFloor = string(" ", left.dist + 1) + string("_", left.width - left.dist - 1) + s_val;
         string s_flagFloor = string(" ", left.dist) + "/" + string(" ", left.width - left.dist - 1 + s_val.size());
         for (int i = 0; i < left.lines.size(); i++) {
-            left.lines[i] += string(" ", s_val.size());
+            left.lines[i] = left.lines[i] + string(" ", s_val.size());
         }
         left.width = left.width + s_val.size();
         left.height += 2;
@@ -65,9 +67,9 @@ Floor draw(TreeNode *root)
     int index = 0;
     while (index < left.lines.size()) {
         if (index < right.lines.size()) {
-            left.lines[index] += string(" ", s_val.size()) + string(" ", right.width);
-        } else {
             left.lines[index] = left.lines[index] + string(" ", s_val.size()) + right.lines[index];
+        } else {
+            left.lines[index] += string(" ", s_val.size()) + string(" ", right.width);
         }
         index++;
     }
@@ -79,19 +81,20 @@ Floor draw(TreeNode *root)
     left.width = left.width + s_val.size() + right.width;
     left.height = left.height > right.height ? (left.height + 2) : (right.height + 2);
     left.dist = left.width + (s_val.size()) / 2;
-
+    left.lines.push_front(s_flagFloor);
+    left.lines.push_front(s_nodeFloor);
     return left;
 }
 
 int main()
 {
-    int data[] = {1, 2, 3};
+    int data[] = {1, 2, 3, 4};
     int len = sizeof(data) / sizeof(int);
 
     Tree *ptree = new Tree(data, len);
 
     deque<string> que = {"nice"};
-    // Floor floor = Floor(que, 1, 2, 3);
+
     Floor floor = draw(ptree->root);
 
     for (int i = 0; i < floor.lines.size(); i++) {
