@@ -73,14 +73,3 @@ Floor *draw(TreeNode *root)
     return left;
 }
 
-int main()
-{
-    int data[] = {1, 2, 3, 4, 5, 6, 7, 8, 1, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 8, 7, 6, 4, 3};
-    int len = sizeof(data) / sizeof(int);
-
-    Tree *ptree = new Tree(data, len);
-    Floor *floor = draw(ptree->root);
-    for (int i = 0; i < floor->lines.size(); i++) {
-        cout << floor->lines[i] << endl;
-    }
-    return 0;
