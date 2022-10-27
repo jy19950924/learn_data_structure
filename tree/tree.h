@@ -30,6 +30,10 @@ public:
     Tree() : root(nullptr){};
     Tree(T arr[], size_t n);
 
+    TreeNode<T> *getRootNode()
+    {
+        return this->root;
+    }
     void drawTree();
     void preorderTraversal();
     void inorderTraversal();

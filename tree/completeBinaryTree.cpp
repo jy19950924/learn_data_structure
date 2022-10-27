@@ -8,17 +8,18 @@
  **/
 
 #include <iostream>
-#include "tree.h"
+#include "./tree.h"
 #include <queue>
 
-bool isCompleteBinaryTree_non_recursion(TreeNode *root)
+template <typename T>
+bool isCompleteBinaryTree_non_recursion(TreeNode<T> *root)
 {
     using namespace std;
     bool leaf = false;
 
-    queue<TreeNode *> que;
+    queue<TreeNode<T> *> que;
     que.push(root);
-    TreeNode *cur = nullptr;
+    TreeNode<T> *cur = nullptr;
     while (!que.empty())
     {
         cur = que.front();
@@ -53,9 +54,9 @@ int main(int argc, char const *argv[])
     int len = sizeof(data) / sizeof(int);
     int len1 = sizeof(data) / sizeof(int);
 
-    Tree *ptree = new Tree(data, len);
-    Tree *ptree1 = new Tree(data1, len1);
-    cout << isCompleteBinaryTree_non_recursion(ptree->root) << endl;
-    cout << isCompleteBinaryTree_non_recursion(ptree1->root) << endl;
+    Tree<int> *ptree = new Tree<int>(data, len);
+    Tree<int> *ptree1 = new Tree<int>(data1, len1);
+    cout << isCompleteBinaryTree_non_recursion(ptree->getRootNode()) << endl;
+    cout << isCompleteBinaryTree_non_recursion(ptree1->getRootNode()) << endl;
     return 0;
 }

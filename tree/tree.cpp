@@ -73,8 +73,8 @@ void Tree<T>::postorderTraversal()
 {
     using namespace std;
 
-    stack<TreeNode *> stk;
-    TreeNode *prev = nullptr, *cur = root;
+    stack<TreeNode<T> *> stk;
+    TreeNode<T> *prev = nullptr, *cur = root;
 
     while (!stk.empty() || cur != nullptr)
     {
