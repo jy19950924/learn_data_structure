@@ -2,11 +2,13 @@
 
 static const int emptyFlag = -1;
 
-Tree::Tree(T *arr, size_t n)
+template <typename T>
+Tree<T>::Tree(T arr[], size_t n)
 {
     using namespace std;
-    TreeNode *nodes = new TreeNode[n];
-    for (int i = 0; i < n; i++) {
+    TreeNode<T> *nodes = new TreeNode<T>[n];
+    for (int i = 0; i < n; i++)
+    {
         if (arr[i] == emptyFlag)
             continue;
         int leftIndex = 2 * i + 1;
@@ -18,38 +20,47 @@ Tree::Tree(T *arr, size_t n)
     this->root = nodes;
 }
 
-void Tree::preorderTraversal()
+template <typename T>
+void Tree<T>::preorderTraversal()
 {
     using namespace std;
 
-    stack<TreeNode *> stk;
+    stack<TreeNode<T> *> stk;
     stk.push(this->root);
-    while (!stk.empty()) {
-        TreeNode *top = stk.top();
+    while (!stk.empty())
+    {
+        TreeNode<T> *top = stk.top();
         stk.pop();
         cout << top->val << ' ';
-        if (top->right != nullptr) {
+        if (top->right != nullptr)
+        {
             stk.push(top->right);
         }
-        if (top->left != nullptr) {
+        if (top->left != nullptr)
+        {
             stk.push(top->left);
         }
     }
     cout << endl;
 }
 
-void Tree::inorderTraversal()
+template <typename T>
+void Tree<T>::inorderTraversal()
 {
     using namespace std;
-    stack<TreeNode *> stk;
-    TreeNode *cur = root;
+    stack<TreeNode<T> *> stk;
+    TreeNode<T> *cur = root;
 
-    while (!stk.empty() || cur != nullptr) {
-        if (cur != nullptr) {
+    while (!stk.empty() || cur != nullptr)
+    {
+        if (cur != nullptr)
+        {
             stk.push(cur);
             cur = cur->left;
-        } else {
-            cur = stk.top();  // parent node
+        }
+        else
+        {
+            cur = stk.top(); // parent node
             stk.pop();
             cout << cur->val << ' ';
             cur = cur->right;
@@ -57,39 +68,54 @@ void Tree::inorderTraversal()
     }
 }
 
-void Tree::postorderTraversal()
+template <typename T>
+void Tree<T>::postorderTraversal()
 {
     using namespace std;
 
     stack<TreeNode *> stk;
     TreeNode *prev = nullptr, *cur = root;
 
-    while (!stk.empty() || cur != nullptr) {
-        if (cur != nullptr) {
+    while (!stk.empty() || cur != nullptr)
+    {
+        if (cur != nullptr)
+        {
             stk.push(cur);
             cur = cur->left;
-        } else {
+        }
+        else
+        {
             cur = stk.top();
-            if (cur->right == nullptr || cur->right == prev) {
+            if (cur->right == nullptr || cur->right == prev)
+            {
                 cout << cur->val << ' ';
                 stk.pop();
                 cur = nullptr;
-            } else {
+            }
+            else
+            {
                 cur = cur->right;
             }
         }
     }
     cout << endl;
 }
-
-void Tree::draw()
+template <typename T>
+void Tree<T>::drawTree()
 {
     using namespace std;
+    cout << "Show The Binary Tree: " << endl;
+    Floor *_out = draw(this->root);
+    for (auto i : _out->lines)
+        cout << i << endl;
+    cout << "successful!" << endl;
 }
 
-Tree::~Tree()
+template <typename T>
+Tree<T>::~Tree()
 {
-    if (this->root != nullptr) {
+    if (this->root != nullptr)
+    {
         delete[] this->root;
     }
 }
