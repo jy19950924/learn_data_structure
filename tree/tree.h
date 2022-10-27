@@ -4,35 +4,38 @@
 #include <iostream>
 #include <queue>
 #include <stack>
+#include "./drawTree.h"
 
-typedef int T;
-
+template <typename T>
 class TreeNode
 {
 public:
-    TreeNode *left;
-    TreeNode *right;
+    TreeNode<T> *left;
+    TreeNode<T> *right;
+    TreeNode<T> *parent;
     T val;
 
-    TreeNode() : left(nullptr), right(nullptr){};
-
-    TreeNode(T val) : left(nullptr), right(nullptr), val(val){};
-    TreeNode(T val, TreeNode *left, TreeNode *right) : left(left), right(right), val(val){};
+    TreeNode() : left(nullptr), right(nullptr), parent(nullptr){};
+    TreeNode(T val) : left(nullptr), right(nullptr), val(val), parent(nullptr){};
+    TreeNode(T val, TreeNode<T> *left, TreeNode<T> *right) : left(left), right(right), val(val), parent(nullptr){};
+    TreeNode(T val, TreeNode<T> *left, TreeNode<T> *right, TreeNode<T> *parent) : left(left), right(right), parent(parent), val(val){};
 };
 
+template <typename T>
 class Tree
 {
-public:
-    TreeNode *root;
-    Tree() : root(nullptr){};
-    Tree(T *arr, size_t n);
+    TreeNode<T> *root;
 
+public:
+    Tree() : root(nullptr){};
+    Tree(T arr[], size_t n);
 
     void drawTree();
-
     void preorderTraversal();
     void inorderTraversal();
     void postorderTraversal();
+
+    void inorderSuccessor();
 
     ~Tree();
 };
