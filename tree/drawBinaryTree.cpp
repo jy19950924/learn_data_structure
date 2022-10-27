@@ -1,19 +1,7 @@
-#include <iostream>
-#include "./tree.h"
-#include <stdlib.h>
-#include <string>
-#include <deque>
+#include "./drawTree.h"
 
 using namespace std;
-
-struct Floor {
-    deque<string> lines;
-    int width;
-    int height;
-    int dist;  // 水平距离
-    Floor(deque<string> v_lines, int i_width, int i_height, int i_dist)
-        : lines(v_lines), width(i_width), height(i_height), dist(i_dist){};
-};
+template <typename T>
 
 Floor *draw(TreeNode *root)
 {
