@@ -56,6 +56,6 @@ int main(int argc, char const *argv[])
     int len = sizeof(data) / sizeof(int);
 
     Tree *ptree = new Tree(data, len);
-    cout << isFullBinaryTree_non_recursion(ptree->root) << endl;
+    cout << isFullBinaryTree_non_recursion(ptree->getRootNode()) << endl;
     return 0;
 }

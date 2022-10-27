@@ -3,16 +3,14 @@
 
 #include "tree.h"
 
-template <typename T>
+typedef int T;
+const int emptyFlag = -1;
+
 class EffectTree : public Tree
 {
 public:
-    EffectTree() : Tree<T>(){};
+    EffectTree() : Tree(){};
     EffectTree(T arr[], size_t n);
-
-    TreeNode<T> *root()
-    {
-        return this->root;
-    }
 };
+
 #endif

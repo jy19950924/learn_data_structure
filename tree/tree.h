@@ -5,32 +5,32 @@
 #include <queue>
 #include <stack>
 #include "./drawTree.h"
+typedef int T;
 
-template <typename T>
 class TreeNode
 {
 public:
-    TreeNode<T> *left;
-    TreeNode<T> *right;
-    TreeNode<T> *parent;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode *parent;
     T val;
 
     TreeNode() : left(nullptr), right(nullptr), parent(nullptr){};
     TreeNode(T val) : left(nullptr), right(nullptr), val(val), parent(nullptr){};
-    TreeNode(T val, TreeNode<T> *left, TreeNode<T> *right) : left(left), right(right), val(val), parent(nullptr){};
-    TreeNode(T val, TreeNode<T> *left, TreeNode<T> *right, TreeNode<T> *parent) : left(left), right(right), parent(parent), val(val){};
+    TreeNode(T val, TreeNode *left, TreeNode *right) : left(left), right(right), val(val), parent(nullptr){};
+    TreeNode(T val, TreeNode *left, TreeNode *right, TreeNode *parent) : left(left), right(right), parent(parent), val(val){};
 };
 
-template <typename T>
 class Tree
 {
-    TreeNode<T> *root;
+protected:
+    TreeNode *root;
 
 public:
     Tree() : root(nullptr){};
     Tree(T arr[], size_t n);
 
-    TreeNode<T> *getRootNode()
+    TreeNode *getRootNode()
     {
         return this->root;
     }

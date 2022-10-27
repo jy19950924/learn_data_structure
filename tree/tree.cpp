@@ -2,11 +2,10 @@
 
 static const int emptyFlag = -1;
 
-template <typename T>
-Tree<T>::Tree(T arr[], size_t n)
+Tree::Tree(T arr[], size_t n)
 {
     using namespace std;
-    TreeNode<T> *nodes = new TreeNode<T>[n];
+    TreeNode *nodes = new TreeNode[n];
     for (int i = 0; i < n; i++)
     {
         if (arr[i] == emptyFlag)
@@ -20,16 +19,15 @@ Tree<T>::Tree(T arr[], size_t n)
     this->root = nodes;
 }
 
-template <typename T>
-void Tree<T>::preorderTraversal()
+void Tree::preorderTraversal()
 {
     using namespace std;
 
-    stack<TreeNode<T> *> stk;
+    stack<TreeNode *> stk;
     stk.push(this->root);
     while (!stk.empty())
     {
-        TreeNode<T> *top = stk.top();
+        TreeNode *top = stk.top();
         stk.pop();
         cout << top->val << ' ';
         if (top->right != nullptr)
@@ -44,12 +42,11 @@ void Tree<T>::preorderTraversal()
     cout << endl;
 }
 
-template <typename T>
-void Tree<T>::inorderTraversal()
+void Tree::inorderTraversal()
 {
     using namespace std;
-    stack<TreeNode<T> *> stk;
-    TreeNode<T> *cur = root;
+    stack<TreeNode *> stk;
+    TreeNode *cur = root;
 
     while (!stk.empty() || cur != nullptr)
     {
@@ -68,13 +65,12 @@ void Tree<T>::inorderTraversal()
     }
 }
 
-template <typename T>
-void Tree<T>::postorderTraversal()
+void Tree::postorderTraversal()
 {
     using namespace std;
 
-    stack<TreeNode<T> *> stk;
-    TreeNode<T> *prev = nullptr, *cur = root;
+    stack<TreeNode *> stk;
+    TreeNode *prev = nullptr, *cur = root;
 
     while (!stk.empty() || cur != nullptr)
     {
@@ -100,8 +96,7 @@ void Tree<T>::postorderTraversal()
     }
     cout << endl;
 }
-template <typename T>
-void Tree<T>::drawTree()
+void Tree::drawTree()
 {
     using namespace std;
     cout << "Show The Binary Tree: " << endl;
@@ -111,8 +106,7 @@ void Tree<T>::drawTree()
     cout << "successful!" << endl;
 }
 
-template <typename T>
-Tree<T>::~Tree()
+Tree::~Tree()
 {
     if (this->root != nullptr)
     {
