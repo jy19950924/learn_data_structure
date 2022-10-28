@@ -183,6 +183,49 @@ Floor *Tree::_drawTree(TreeNode *root)
     return left;
 }
 
+void Tree::_inorderSuccessor(TreeNode *root, TreeNode *target, TreeNode **prev, TreeNode **cur)
+{
+    if (root == nullptr)
+        return;
+    this->_inorderSuccessor(root->left, target, prev, cur);
+    if ((*prev) == target)
+        (*cur) = root;
+    (*prev) = root;
+    this->_inorderSuccessor(root->right, target, prev, cur);
+}
+
+TreeNode *Tree::inorderSuccessor(TreeNode *target, bool recursion)
+{
+    if (recursion)
+    {
+        TreeNode *cur = nullptr, *prev = nullptr;
+        this->_inorderSuccessor(this->root, target, &prev, &cur);
+        return cur;
+    }
+    using namespace std;
+    stack<TreeNode *> stk;
+    TreeNode *root = this->root;
+    TreeNode *prev = nullptr;
+    while (root != nullptr || !stk.empty())
+    {
+        if (root != nullptr)
+        {
+            stk.push(root);
+            root = root->left;
+        }
+        else
+        {
+            root = stk.top();
+            stk.pop();
+            if (prev == target)
+                return root;
+            prev = root;
+            root = root->right;
+        }
+    }
+    return nullptr;
+}
+
 Tree::~Tree()
 {
     if (this->root != nullptr)
