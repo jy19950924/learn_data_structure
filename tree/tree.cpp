@@ -31,13 +31,9 @@ void Tree::preorderTraversal()
         stk.pop();
         cout << top->val << ' ';
         if (top->right != nullptr)
-        {
             stk.push(top->right);
-        }
         if (top->left != nullptr)
-        {
             stk.push(top->left);
-        }
     }
     cout << endl;
 }
@@ -89,9 +85,7 @@ void Tree::postorderTraversal()
                 cur = nullptr;
             }
             else
-            {
                 cur = cur->right;
-            }
         }
     }
     cout << endl;
@@ -141,9 +135,7 @@ Floor *Tree::_drawTree(TreeNode *root)
         string s_nodeFloor = string(left->dist + 1, ' ') + string(left->width - left->dist - 1, '_') + s_val;
         string s_flagFloor = string(left->dist, ' ') + "/" + string(left->width - left->dist - 1 + s_nval, ' ');
         for (int i = 0; i < left->lines.size(); i++)
-        {
             left->lines[i] = left->lines[i] + string(s_nval, ' ');
-        }
         left->dist = left->width + s_nval / 2;
         left->width = left->width + s_nval;
         left->height += 2;
