@@ -46,9 +46,9 @@ int main(int argc, char const *argv[])
     int len2 = sizeof(data2) / sizeof(int);
 
     Tree *ptree = new Tree(data, len);
-    cout << "first tree : " << isBalanceBinaryTree_recursion(ptree->root) << endl;
+    cout << "first tree : " << isBalanceBinaryTree_recursion(ptree->getRootNode()) << endl;
     Tree *ptree2 = new Tree(data2, len2);
-    cout << "second tree : " << isBalanceBinaryTree_recursion(ptree2->root) << endl;
+    cout << "second tree : " << isBalanceBinaryTree_recursion(ptree2->getRootNode()) << endl;
 
     return 0;
 }
