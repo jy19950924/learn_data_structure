@@ -11,6 +11,8 @@ class EffectTree : public Tree
 public:
     EffectTree() : Tree(){};
     EffectTree(T arr[], size_t n);
+
+    TreeNode *inorderSuccessor(TreeNode *target);
 };
 
 #endif

@@ -16,3 +16,24 @@ EffectTree::EffectTree(T arr[], size_t n)
     }
     this->root = nodes;
 }
+
+TreeNode *EffectTree::inorderSuccessor(TreeNode *node)
+{
+    if (node->right != nullptr)
+    {
+        TreeNode *cur = node->right;
+        while (cur->left != nullptr)
+            cur = cur->left;
+        return cur;
+    }
+    else
+    {
+        TreeNode *parent = node->parent;
+        while (parent != nullptr && parent->left != node)
+        {
+            node = parent;
+            parent = node->parent;
+        }
+        return parent;
+    }
+}
