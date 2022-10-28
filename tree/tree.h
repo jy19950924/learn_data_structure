@@ -38,6 +38,7 @@ protected:
 
 private:
     Floor *_drawTree(TreeNode *);
+    void _inorderSuccessor(TreeNode *root, TreeNode *target, TreeNode **prev, TreeNode **cur);
 
 public:
     Tree() : root(nullptr){};
@@ -52,7 +53,7 @@ public:
     void inorderTraversal();
     void postorderTraversal();
 
-    void inorderSuccessor();
+    TreeNode *inorderSuccessor(TreeNode *target, bool recursion = false);
 
     ~Tree();
 };
