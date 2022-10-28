@@ -4,6 +4,7 @@
 #include <iostream>
 #include <queue>
 #include <stack>
+#include <string>
 typedef int T;
 
 class TreeNode
