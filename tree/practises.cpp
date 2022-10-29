@@ -1,5 +1,6 @@
 #include <iostream>
 #include <queue>
+#include <string>
 #include "./tree.h"
 
 namespace practise_1
@@ -70,60 +71,54 @@ namespace practise_2
     using std::queue;
     using std::string;
     using std::vector;
+    void _serialize(TreeNode *root, string &result)
+    {
+        if (root == nullptr)
+        {
+            result += "null,";
+            return;
+        }
+        string res = std::to_string(root->val);
+        result += res + ",";
+        _serialize(root->left, result);
+        _serialize(root->right, result);
+    }
     string serialize(TreeNode *root)
     {
-        vector<string> nodes;
-        queue<TreeNode *> que;
-        que.push(root);
-
-        TreeNode *tail = root;
-        TreeNode *nextTail = nullptr;
-        int nextEmptyCount = 0;
-
-        while (!que.empty())
+        string result = "";
+        _serialize(root, result);
+        return result;
+    }
+    TreeNode *_deserialize(std::deque<string> &nodes)
+    {
+        if (nodes.front() == "null")
         {
-            root = que.front();
-            que.pop();
-            if (root != nullptr)
-            {
-                if (root->left != nullptr)
-                {
-                    nextTail = root->left;
-                    while (nextEmptyCount > 0)
-                    {
-                        que.push(nullptr);
-                        nextEmptyCount--;
-                    }
-                    que.push(root->left);
-                    nextEmptyCount = 0;
-                }
-                else
-                    nextEmptyCount++;
-
-                if (root->right != nullptr)
-                {
-                    nextTail = root->right;
-                    while (nextEmptyCount > 0)
-                    {
-                        que.push(nullptr);
-                        nextEmptyCount--;
-                    }
-                    que.push(root->right);
-                    nextEmptyCount = 0;
-                }
-                else
-                    nextEmptyCount++;
-            }
-            else
-            {
-                nextEmptyCount += 2;
-            }
-
-            if (root == tail)
-            {
-                tail = nextTail;
-            }
+            nodes.pop_front();
+            return nullptr;
         }
+        TreeNode *root = new TreeNode(stoi(nodes.front()));
+        nodes.pop_front();
+        root->left = _deserialize(nodes);
+        root->right = _deserialize(nodes);
+        return root;
+    }
+
+    TreeNode *deserialize(string data)
+    {
+        std::deque<string> nodes;
+        size_t index = data.find(',');
+        while (index != string::npos)
+        {
+            string node = data.substr(0, index);
+            data = data.substr(index + 1);
+            nodes.push_back(node);
+            index = data.find(',');
+        }
+        nodes.push_back(data);
+        int len = nodes.size();
+        TreeNode *res = new TreeNode[len];
+
+        return _deserialize(nodes);
     }
     void practise_2()
     {
@@ -133,11 +128,24 @@ namespace practise_2
 
         Tree *ptree = new Tree(data, len);
         ptree->drawTree();
-        cout << serialize(ptree->getRootNode()) << endl;
+        serialize(ptree->getRootNode());
     }
 }
 
 int main()
 {
-    return 0;
+    using namespace std;
+    int n;
+    cin >> n;
+    switch (n)
+    {
+    case 1:
+        practise_1::practise_1();
+        break;
+    case 2:
+        practise_2::practise_2();
+        break;
+    default:
+        break;
+    }
 }
