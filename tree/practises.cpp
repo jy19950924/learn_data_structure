@@ -105,19 +105,19 @@ namespace practise_2
 
     TreeNode *deserialize(string data)
     {
+        using namespace std;
         std::deque<string> nodes;
-        size_t index = data.find(',');
-        while (index != string::npos)
+        string str;
+        for (auto &ch : data)
         {
-            string node = data.substr(0, index);
-            data = data.substr(index + 1);
-            nodes.push_back(node);
-            index = data.find(',');
+            if (ch == ',')
+            {
+                nodes.push_back(str);
+                str.clear();
+            }
+            else
+                str.push_back(ch);
         }
-        nodes.push_back(data);
-        int len = nodes.size();
-        TreeNode *res = new TreeNode[len];
-
         return _deserialize(nodes);
     }
     void practise_2()
