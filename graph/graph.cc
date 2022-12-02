@@ -1,9 +1,6 @@
-#include "graph.h"
+#include "./graph.h"
 #include <algorithm>
 #include <fstream>
-#include <iterator>
-#include <queue>
-#include <string>
 
 Edge::Edge(Node *from, Node *to, int weight) {
   this->_from = from;
@@ -51,12 +48,69 @@ void Graph::_display(std::vector<std::vector<string>> &matrix,
     }
   }
 }
+class compareEdge {
+public:
+  bool operator()(Edge *first, Edge *second) {
+    return first->_weight > second->_weight;
+  }
+};
 
-bool Graph::_hasCircle(Node *from, Node *to) { return false; }
-void Graph::kruskal(Node *head) {
-  std::set<Node *> records;
-  std::priority_queue<Node *, >
+bool Graph::_hasSameSet(Node *from, Node *to,
+                        const map<Node *, set<Node *> *> &sset) {
+  return sset.find(from)->second == sset.find(to)->second;
 }
+vector<Edge *> Graph::_kruskal() {
+  // 1. init sset and heapEdges
+  std::map<Node *, std::set<Node *> *> sset;
+  std::priority_queue<Edge *, vector<Edge *>, compareEdge> heapEdges;
+  for (auto &edge : this->edges) {
+    heapEdges.push(edge);
+    Node *from = edge->_from, *to = edge->_to;
+    if (sset.find(from) == sset.end()) {
+      std::set<Node *> *tset = new std::set<Node *>{from};
+      sset.insert({from, tset});
+    }
+  }
+
+  vector<Edge *> res;
+  while (!heapEdges.empty()) {
+    // 2. select the edge of the minium weight
+    Edge *minEdge = heapEdges.top();
+    heapEdges.pop();
+    Node *from = minEdge->_from, *to = minEdge->_to;
+    // 3. determine whether the start point and end point are in the same set
+    if (this->_hasSameSet(from, to, sset))
+      continue;
+    // 4. selected this edge
+    res.push_back(minEdge);
+    std::set<Node *> *fromSet = sset.find(from)->second;
+    std::set<Node *> *toSet = sset.find(to)->second;
+    for (auto node : (*toSet)) {
+      std::for_each(fromSet->begin(), fromSet->end(),
+                    [](Node *node) { std::cout << node->val << " "; });
+      std::cout << std::endl;
+      std::cout << "insert: " << node->val << std::endl;
+      (*fromSet).insert(node);
+    }
+    delete toSet;
+    sset.find(to)->second = fromSet;
+  }
+  return res;
+}
+void Graph::krusal() {
+  vector<Edge *> res = this->_kruskal();
+  std::ofstream out;
+  out.open("./krusal.txt");
+  if (!out.is_open())
+    return;
+  out << "from" << '\t' << "to" << '\t' << "weight";
+  for (const auto &edge : res) {
+    out << edge->_from << '\t' << edge->_to << '\t' << edge->_weight
+        << std::endl;
+  }
+  std::cout << "krusal successed" << std::endl;
+}
+
 Graph::Graph(std::vector<std::vector<std::string>> connects) {
   std::map<std::string, Node *> steps;
 
@@ -89,10 +143,12 @@ Graph::Graph(std::vector<std::vector<std::string>> connects) {
 int main() {
   using namespace std;
   vector<vector<string>> connects = {
-      {"A", "C"}, {"C", "A"}, {"A", "B"}, {"B", "A"}, {"A", "D"},
-      {"D", "A"}, {"B", "C"}, {"C", "B"}, {"D", "C"}, {"C", "D"},
-      {"C", "E"}, {"E", "C"}, {"D", "E"}, {"E", "D"}};
+      {"A", "C", "3"}, {"C", "A", "3"}, {"A", "B", "10"},  {"B", "A", "10"},
+      {"A", "D", "5"}, {"D", "A", "5"}, {"B", "C", "4"},   {"C", "B", "4"},
+      {"D", "C", "2"}, {"C", "D", "2"}, {"D", "E", "6"},   {"E", "D", "6"},
+      {"B", "D", "1"}, {"D", "B", "1"}, {"B", "E", "100"}, {"E", "B", "100"}};
 
   Graph *graph = new Graph(connects);
   graph->display();
+  graph->krusal();
 }
