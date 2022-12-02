@@ -1,6 +1,7 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
+#include <algorithm>
 #include <fstream>
 #include <iostream>
 #include <iterator>
@@ -10,6 +11,8 @@
 #include <string>
 #include <vector>
 
+using std::map;
+using std::set;
 using std::string;
 using std::vector;
 struct Edge;
@@ -37,13 +40,15 @@ class Graph {
   std::set<Edge *> edges; // int:weight
 
   void _display(vector<vector<string>> &, std::map<Node *, int> &);
-  bool _hasCircle(Node *from, Node *to);
+  bool _hasSameSet(Node *from, Node *to,
+                   const map<Node *, set<Node *> *> &sset);
+  vector<Edge *> _kruskal();
 
 public:
   Graph(vector<vector<string>> connects);
 
   void display();
-  void kruskal(Node *head);
+  void krusal();
 };
 
 #endif
