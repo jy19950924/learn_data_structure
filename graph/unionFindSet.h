@@ -10,7 +10,7 @@ class Node {
 
  public:
   Node(int val) : _father(nullptr), _val(val) {}
-  Node() : Node() {}
+  Node() : Node(0) {}
 
   void setFather(Node* f) { this->_father = f; }
   Node* getFather() { return this->_father; }
@@ -20,14 +20,12 @@ class Node {
 // not weight
 class UnionFindSet {
  public:
-  typedef int type_value;
-  UnionFindSet() = default;
-  UnionFindSet(vector<type_value> nodes);
+  UnionFindSet(vector<int> nodes);
 
   Node* Find(int targer);
-  void Union(Node* distNode, Node* srcNode);
+  void Union(int distNodeValue, int srcNodeValue);
+  int Count();
 
  private:
-  std::map<type_value, Node*> _roots;
-  std::map<type_value, Node*> _nodes;
+  std::map<int, Node*> _nodes;
 };
