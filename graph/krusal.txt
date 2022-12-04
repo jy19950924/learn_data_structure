@@ -1,0 +1,4 @@
+from	to	weightA	C	3
+A	B	10
+D	E	6
+D	C	2

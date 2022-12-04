@@ -73,26 +73,46 @@ Graph::Graph(std::vector<std::vector<std::string>> connects) {
   }
 }
 
-vector<Edge *> Graph::_kruskal() { UnionFindSet sset() return res; }
+vector<Edge *> Graph::_kruskal(vector<string> &nodes) {
+  UnionFindSet::UnionFindSet sset(nodes);
+  std::priority_queue<Edge *, vector<Edge *>, greater<Edge *>> edgeSet;
+  for (auto edge : this->edges) {
+    edgeSet.push(edge);
+  }
+  vector<Edge *> res;
+  while (!edgeSet.empty()) {
+    Edge *edge = edgeSet.top();
+    edgeSet.pop();
+    Node *fromNode = edge->_from, *toNode = edge->_to;
+    UnionFindSet::Node *fromRoot = sset.Find(fromNode->val), *toRoot = sset.Find(toNode->val);
+    if (fromRoot == toRoot) {
+      continue;
+    }
+    res.push_back(edge);
+    sset.Union(fromNode->val, toNode->val);
+  }
+  return res;
+}
 
-void Graph::krusal() {
-  vector<Edge *> res = this->_kruskal();
+void Graph::krusal(vector<string> nodes) {
+  vector<Edge *> res = this->_kruskal(nodes);
   std::ofstream out;
   out.open("./krusal.txt");
   if (!out.is_open()) return;
   out << "from" << '\t' << "to" << '\t' << "weight";
   for (const auto &edge : res) {
-    out << edge->_from << '\t' << edge->_to << '\t' << edge->_weight << std::endl;
+    out << edge->_from->val << '\t' << edge->_to->val << '\t' << edge->_weight << std::endl;
   }
   std::cout << "krusal successed" << std::endl;
 }
 
 int main() {
   using namespace std;
+  vector<string> nodes = {"A", "B", "C", "D", "E"};
   vector<vector<string>> connects = {{"A", "C", "3"}, {"C", "A", "3"}, {"A", "B", "10"}, {"B", "A", "10"}, {"A", "D", "5"}, {"D", "A", "5"}, {"B", "C", "4"},   {"C", "B", "4"},
                                      {"D", "C", "2"}, {"C", "D", "2"}, {"D", "E", "6"},  {"E", "D", "6"},  {"B", "D", "1"}, {"D", "B", "1"}, {"B", "E", "100"}, {"E", "B", "100"}};
 
   Graph *graph = new Graph(connects);
   graph->display();
-  graph->krusal();
+  graph->krusal(nodes);
 }

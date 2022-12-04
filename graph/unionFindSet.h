@@ -5,6 +5,7 @@
 
 using std::string;
 using std::vector;
+namespace UnionFindSet {
 
 class Node {
   Node* _father;
@@ -31,3 +32,4 @@ class UnionFindSet {
  private:
   std::map<string, Node*> _nodes;
 };
+}  // namespace UnionFindSet

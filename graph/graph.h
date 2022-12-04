@@ -13,10 +13,12 @@
 
 #include "./unionFindSet.h"
 
+using std::greater;
 using std::map;
 using std::set;
 using std::string;
 using std::vector;
+
 struct Edge;
 struct Node {
   int in;
@@ -35,6 +37,8 @@ struct Edge {
 
  public:
   Edge(Node *from, Node *to, int weight);
+
+  bool operator<(const Edge &edge) { return this->_weight < edge._weight; }
 };
 
 class Graph {
@@ -42,14 +46,13 @@ class Graph {
   std::set<Edge *> edges;  // int:weight
 
   void _display(vector<vector<string>> &, std::map<Node *, int> &);
-  bool _hasSameSet(Node *from, Node *to, const map<Node *, set<Node *> *> &sset);
-  vector<Edge *> _kruskal();
+  vector<Edge *> _kruskal(vector<string> &nodes);
 
  public:
   Graph(vector<vector<string>> connects);
 
   void display();
-  void krusal();
+  void krusal(vector<string> nodes);
 };
 
 #endif
