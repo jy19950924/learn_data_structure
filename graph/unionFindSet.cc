@@ -1,6 +1,6 @@
 #include "unionFindSet.h"
 
-UnionFindSet::UnionFindSet(vector<int> nodes) {
+UnionFindSet::UnionFindSet(vector<string> nodes) {
   for (auto node : nodes) {
     Node* p = new Node(node);
     p->setFather(p);
@@ -8,7 +8,7 @@ UnionFindSet::UnionFindSet(vector<int> nodes) {
   }
 }
 
-Node* UnionFindSet::Find(int value) {
+Node* UnionFindSet::Find(string value) {
   Node* res = nullptr;
   auto iter = this->_nodes.find(value);
   if (iter != this->_nodes.end()) {
@@ -18,7 +18,7 @@ Node* UnionFindSet::Find(int value) {
   }
   return res;
 }
-void UnionFindSet::Union(int distRootValue, int srcRootValue) {
+void UnionFindSet::Union(string distRootValue, string srcRootValue) {
   Node* distRoot = this->Find(distRootValue);
   Node* srcRoot = this->Find(srcRootValue);
   if (distRoot != srcRoot) {
@@ -34,10 +34,10 @@ int UnionFindSet::Count() {
   }
   return count;
 }
-int countCriminalGangs(vector<int>& nodes, vector<vector<int>>& edges) {
+int countCriminalGangs(vector<string>& nodes, vector<vector<string>>& edges) {
   UnionFindSet findSet(nodes);
   for (const auto edge : edges) {
-    int fromValue = edge[0], toValue = edge[1];
+    string fromValue = edge[0], toValue = edge[1];
     findSet.Union(fromValue, toValue);
   }
   return findSet.Count();
@@ -45,8 +45,8 @@ int countCriminalGangs(vector<int>& nodes, vector<vector<int>>& edges) {
 
 int main() {
   using namespace std;
-  vector<int> nodes = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
-  vector<vector<int>> edges = {{1, 2}, {4, 5}, {3, 4}, {1, 3}, {5, 6}, {7, 10}, {5, 10}, {8, 9}};
+  vector<string> nodes = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"};
+  vector<vector<string>> edges = {{"1", "2"}, {"4", "5"}, {"3", "4"}, {"1", "3"}, {"5", "6"}, {"7", "10"}, {"5", "10"}, {"8", "9"}};
   cout << countCriminalGangs(nodes, edges) << endl;
   return 0;
 }
