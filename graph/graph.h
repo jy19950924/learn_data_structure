@@ -3,9 +3,11 @@
 
 #include <algorithm>
 #include <fstream>
+#include <functional>
 #include <iostream>
 #include <iterator>
 #include <map>
+#include <numeric>
 #include <queue>
 #include <set>
 #include <string>
@@ -13,7 +15,6 @@
 
 #include "./unionFindSet.h"
 
-using std::greater;
 using std::map;
 using std::set;
 using std::string;
@@ -35,24 +36,33 @@ struct Edge {
   Node *_to;
   int _weight;
 
- public:
+public:
   Edge(Node *from, Node *to, int weight);
 
-  bool operator<(const Edge &edge) { return this->_weight < edge._weight; }
+  bool operator>(const Edge &edge) { return this->_weight < edge._weight; }
 };
 
 class Graph {
-  std::set<Node *> nodes;  // int:value
-  std::set<Edge *> edges;  // int:weight
+  std::set<Node *> nodes;
+  std::set<Edge *> edges;
 
   void _display(vector<vector<string>> &, std::map<Node *, int> &);
   vector<Edge *> _kruskal(vector<string> &nodes);
+  vector<Edge *> _prim();
+  void _displayTree(string type, vector<Edge *> &edges);
+  vector<Edge *> _dijkstra(Node *beginPoint, Node *endPoint);
 
- public:
+public:
   Graph(vector<vector<string>> connects);
 
   void display();
   void krusal(vector<string> nodes);
+  void prim();
+  void dijkstra(Node *beginPoint, Node *endPoint);
 };
-
+struct CompareEdgeWeight {
+  bool operator()(const Edge *first, const Edge *second) {
+    return first->_weight > second->_weight;
+  }
+};
 #endif
