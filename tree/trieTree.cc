@@ -47,6 +47,7 @@ void TrieTree::TrieTree::Delete(string s) {
     } else
       cur = cur->nexts[index];
   }
+  cur->end--;
   while (!deleteNode.empty()) {
     delete deleteNode.top();
     deleteNode.pop();
