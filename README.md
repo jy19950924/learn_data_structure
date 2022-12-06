@@ -1,6 +1,6 @@
-# zuochengyun
+# Data_Structure_and_Algorithms
 
-牛客网左神视频笔记。
+数据结构与算法
 
 - [ ] sort
     - [x] bubbleSort
@@ -12,7 +12,7 @@
 
 - [ ] list
 
-- [ ] tree
+- [x] tree
     - [x] traversal(recursion and non-recursive)
         - [x] preorder traversal
         - [x] inorder traversal
@@ -28,9 +28,17 @@
         - [x] judgment full binary tree
     - [x] balance binary tree
         - [x] judgment balance binary tree
-    
-    - [ ] successor node
-    - [ ] examples
-        - [ ] find common ancestor
-        - [ ] binary tree serialization and deserilize (learn by self)
-        - [ ] question: paper folded in half
+    - [x] trie Tree
+        - [x] insert
+        - [x] delete
+        - [x] count
+        - [x] countPrefix
+        
+ - [x] Graph
+    - [x] DFS
+    - [x] BFS
+    - [x] Minimum Spanning Tree
+        - [x] krusal
+        - [x] prim
+    - [x] Minimum Path
+        - [x] dijstra
