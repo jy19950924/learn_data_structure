@@ -2,7 +2,7 @@
 
 数据结构与算法
 
-- [ ] sort
+# Sort
     - [x] bubbleSort
     - [x] selectSort
     - [x] insertSort
