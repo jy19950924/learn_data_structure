@@ -6,6 +6,7 @@
 #include <functional>
 #include <iostream>
 #include <iterator>
+#include <limits>
 #include <map>
 #include <numeric>
 #include <queue>
@@ -28,6 +29,7 @@ struct Node {
   std::vector<Edge *> edges;
   std::string val;
 
+  Node() : Node("") {}
   Node(std::string val) : val(val), in(0), out(0) {}
 };
 
@@ -50,7 +52,8 @@ class Graph {
   vector<Edge *> _kruskal(vector<string> &nodes);
   vector<Edge *> _prim();
   void _displayTree(string type, vector<Edge *> &edges);
-  vector<Edge *> _dijkstra(Node *beginPoint, Node *endPoint);
+  int _dijkstra(Node *beginPoint, Node *endPoint);
+  Node *_getUnselectedMinNode(set<Node *> &passingNode, map<Node *, int> &cost);
 
 public:
   Graph(vector<vector<string>> connects);
@@ -59,8 +62,9 @@ public:
   void krusal(vector<string> nodes);
   void prim();
   void dijkstra(Node *beginPoint, Node *endPoint);
+  set<Node *> &getNodes() { return this->nodes; }
 };
-struct CompareEdgeWeight {
+struct CompareEdge {
   bool operator()(const Edge *first, const Edge *second) {
     return first->_weight > second->_weight;
   }
