@@ -81,7 +81,7 @@ Graph::Graph(std::vector<std::vector<std::string>> connects) {
 
 vector<Edge *> Graph::_kruskal(vector<string> &nodes) {
   UnionFindSet::UnionFindSet sset(nodes);
-  std::priority_queue<Edge *, vector<Edge *>, CompareEdgeWeight> edgeSet;
+  std::priority_queue<Edge *, vector<Edge *>, CompareEdge> edgeSet;
   for (auto edge : this->edges) {
     edgeSet.push(edge);
   }
@@ -129,7 +129,7 @@ void Graph::_displayTree(string type, vector<Edge *> &edges) {
 vector<Edge *> Graph::_prim() {
   std::set<Node *> passingNodes;
   vector<Edge *> selectedEdges;
-  std::priority_queue<Edge *, vector<Edge *>, CompareEdgeWeight> unlockedEdges;
+  std::priority_queue<Edge *, vector<Edge *>, CompareEdge> unlockedEdges;
   for (const auto node : this->nodes) {
     if (passingNodes.find(node) == passingNodes.end()) {
       passingNodes.insert(node);
@@ -154,18 +154,76 @@ vector<Edge *> Graph::_prim() {
 }
 // dijkstra
 void Graph::dijkstra(Node *beginPoint, Node *endPoint) {
-  vector<Edge *> res = this->_dijkstra(beginPoint, endPoint);
-  this->_displayTree("dijkstra", res);
+  int minPath = this->_dijkstra(beginPoint, endPoint);
+  std::cout << minPath << std::endl;
 }
-vector<Edge *> Graph::_dijkstra(Node *beginPoint, Node *endPoint) {
+int Graph::_dijkstra(Node *beginPoint, Node *endPoint) {
   std::set<Node *> passingNode;
-  std::map<Node *, int> cost;
-  vector<Edge *> edges = beginPoint->edges;
-  for (const auto edge : edges) {
+  std::map<Node *, int> cost; // path cost
+  for (const auto node : this->nodes) {
+    cost.insert({node, INT_MAX});
   }
+  cost.find(beginPoint)->second = 0;
+
+  Node *node = beginPoint;
+  while (node != endPoint) {
+    vector<Edge *> edges = node->edges;
+    int curPath = cost.find(node)->second;
+    passingNode.insert(node);
+
+    for (const auto edge : edges) {
+      Node *distNode = edge->_to;
+      if (passingNode.find(distNode) == passingNode.end()) {
+        auto iter = cost.find(distNode);
+
+        if ((*iter).second > curPath + edge->_weight) {
+          (*iter).second = curPath + edge->_weight;
+        }
+      }
+    }
+    node = this->_getUnselectedMinNode(passingNode, cost);
+  }
+  return cost.find(endPoint)->second;
 }
 
-int main() {
+Node *Graph::_getUnselectedMinNode(set<Node *> &passingNode,
+                                   map<Node *, int> &cost) {
+  // 获取未选择的最小cost值的点（临时版本）
+  Node *res = nullptr;
+  map<int, Node *> sortCost;
+  std::transform(cost.begin(), cost.end(), inserter(sortCost, sortCost.begin()),
+                 [](const auto &iter) {
+                   return std::pair<int, Node *>{iter.second, iter.first};
+                 });
+  for (const auto &curCost : sortCost) {
+    if (passingNode.find(curCost.second) == passingNode.end()) {
+      return curCost.second;
+    }
+  }
+  return res;
+}
+// testcode
+int testDijkstra() {
+  vector<string> nodes = {"begin", "A", "B", "end"};
+  vector<vector<string>> connects = {{"begin", "A", "1"},
+                                     {"begin", "B", "2"},
+                                     {"B", "A", "3"},
+                                     {"A", "end", "1"},
+                                     {"B", "end", "5"}};
+  Graph *graph = new Graph(connects);
+  Node *beginPoint = nullptr, *endPoint = nullptr;
+  for (const auto &node : graph->getNodes()) {
+    if (node->val == "begin") {
+      beginPoint = node;
+    } else if (node->val == "end") {
+      endPoint = node;
+    }
+  }
+  graph->dijkstra(beginPoint, endPoint);
+  return 0;
+}
+
+int testMST() {
   using namespace std;
   vector<string> nodes = {"A", "B", "C", "D", "E"};
   vector<vector<string>> connects = {
@@ -179,4 +237,8 @@ int main() {
   graph->krusal(nodes);
   graph->prim();
   return 0;
+}
+int main() {
+  testDijkstra();
+  testMST();
 }
