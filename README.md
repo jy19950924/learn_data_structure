@@ -1,6 +1,6 @@
 # Data_Structure_and_Algorithms
 
-数据结构与算法
+数据结构与算法(持续更新)
 
 ## Sort
 - [x] bubbleSort
