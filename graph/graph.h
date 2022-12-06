@@ -25,8 +25,8 @@ struct Edge;
 struct Node {
   int in;
   int out;
-  std::vector<Edge *> nexts;
-  std::vector<Edge *> edges;
+  std::vector<Edge*> nexts;
+  std::vector<Edge*> edges;
   std::string val;
 
   Node() : Node("") {}
@@ -34,26 +34,26 @@ struct Node {
 };
 
 struct Edge {
-  Node *_from;
-  Node *_to;
+  Node* _from;
+  Node* _to;
   int _weight;
 
 public:
-  Edge(Node *from, Node *to, int weight);
+  Edge(Node* from, Node* to, int weight);
 
-  bool operator>(const Edge &edge) { return this->_weight < edge._weight; }
+  bool operator>(const Edge& edge) { return this->_weight < edge._weight; }
 };
 
 class Graph {
-  std::set<Node *> nodes;
-  std::set<Edge *> edges;
+  std::set<Node*> nodes;
+  std::set<Edge*> edges;
 
-  void _display(vector<vector<string>> &, std::map<Node *, int> &);
-  vector<Edge *> _kruskal(vector<string> &nodes);
-  vector<Edge *> _prim();
-  void _displayTree(string type, vector<Edge *> &edges);
-  int _dijkstra(Node *beginPoint, Node *endPoint);
-  Node *_getUnselectedMinNode(set<Node *> &passingNode, map<Node *, int> &cost);
+  void _display(vector<vector<string>>&, std::map<Node*, int>&);
+  vector<Edge*> _kruskal(vector<string>& nodes);
+  vector<Edge*> _prim();
+  void _displayTree(string type, vector<Edge*>& edges);
+  int _dijkstra(Node* beginPoint, Node* endPoint);
+  Node* _getUnselectedMinNode(set<Node*>& passingNode, map<Node*, int>& cost);
 
 public:
   Graph(vector<vector<string>> connects);
@@ -61,11 +61,11 @@ public:
   void display();
   void krusal(vector<string> nodes);
   void prim();
-  void dijkstra(Node *beginPoint, Node *endPoint);
-  set<Node *> &getNodes() { return this->nodes; }
+  void dijkstra(Node* beginPoint, Node* endPoint);
+  set<Node*>& getNodes() { return this->nodes; }
 };
 struct CompareEdge {
-  bool operator()(const Edge *first, const Edge *second) {
+  bool operator()(const Edge* first, const Edge* second) {
     return first->_weight > second->_weight;
   }
 };
