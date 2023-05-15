@@ -8,7 +8,7 @@
 - [x] insertSort
 - [x] mergeSort
 - [x] bucketSort
-- [ ] fastSort 
+- [x] QuickSort 
 
 ## LinkList
 
