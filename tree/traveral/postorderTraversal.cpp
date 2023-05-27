@@ -32,7 +32,6 @@ void postorderTraversal(TreeNode *root)
 
 int main()
 {
-    using namespace std;
     int data[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
     int len = sizeof(data) / sizeof(int);
 
