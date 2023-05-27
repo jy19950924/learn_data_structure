@@ -8,7 +8,7 @@
 #include <iostream>
 
 // 先序遍历。主要是非递归版本
-void inorderTraversal(TreeNode *root)
+void preorderTraversal(TreeNode *root)
 {
     using namespace std;
     stack<TreeNode *> stk;
@@ -38,5 +38,5 @@ int main()
     int len = sizeof(data) / sizeof(int);
 
     Tree tree1 = Tree(data, len);
-    inorderTraversal(tree1.root); //2 4 3 8 9 5 6 77 8
+    preorderTraversal(tree1.root); //2 4 3 8 9 5 6 77 8
 }
