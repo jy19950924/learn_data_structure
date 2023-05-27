@@ -39,8 +39,6 @@ int main()
     int len = sizeof(data) / sizeof(int);
 
     Tree tree = Tree(data, len);
-    cout << "preorder traversal: ";
-    tree.preorderTraversal();
     cout << "inorder traversal: ";
     inorderTraversal(tree.root);
     cout << "done!" << endl;
