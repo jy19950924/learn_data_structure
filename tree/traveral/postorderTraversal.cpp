@@ -1,11 +1,9 @@
 #include <iostream>
 #include "../tree.h"
 #include <stack>
-
+using namespace std;
 void postorderTraversal(TreeNode *root)
 {
-    using namespace std;
-
     stack<TreeNode *> helpStack;
     TreeNode *prev = nullptr, *cur = root;
 
@@ -26,9 +24,7 @@ void postorderTraversal(TreeNode *root)
                 cur = nullptr;
             }
             else
-            {
                 cur = parentNode->right;
-            }
             prev = parentNode;
         }
     }
